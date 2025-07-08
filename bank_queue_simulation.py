@@ -5,21 +5,18 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# -------------------------------------------
-# 🧾 Step 1: Define number of customers
-# -------------------------------------------
+# Define number of customers
+
 NUM_CUSTOMERS = 500
 
-# -------------------------------------------
-# 🕒 Step 2: Generate Inter-arrival and Service Times
-# Uniform distribution as per instructions
-# -------------------------------------------
+# Generate Inter-arrival and Service Times
+
+
 inter_arrival_times = [random.uniform(1, 8) for _ in range(NUM_CUSTOMERS)]
 service_times = [random.uniform(1, 6) for _ in range(NUM_CUSTOMERS)]
 
-# -------------------------------------------
-# ⏳ Step 3: Simulate Arrival, Service Start, End Times
-# -------------------------------------------
+# Simulate Arrival, Service Start, End Times
+
 arrival_times = []
 start_service_times = []
 end_service_times = []
@@ -53,9 +50,8 @@ for i in range(NUM_CUSTOMERS):
 
     current_time = arrival_time  # Move time forward
 
-# -------------------------------------------
-# 📊 Step 4: Create a DataFrame for results
-# -------------------------------------------
+#  Create a DataFrame for results
+
 df = pd.DataFrame({
     'Customer': range(1, NUM_CUSTOMERS + 1),
     'InterArrivalTime': inter_arrival_times,
@@ -70,9 +66,8 @@ df = pd.DataFrame({
 # Save to CSV (optional)
 df.to_csv("bank_queue_simulation.csv", index=False)
 
-# -------------------------------------------
-# 📈 Step 5: Compute Performance Metrics
-# -------------------------------------------
+# Compute Performance Metrics
+
 print("\n--- Simulation Results ---")
 print(f"Average Waiting Time     : {df['WaitingTime'].mean():.2f} minutes")
 print(f"Average Service Time     : {df['ServiceTime'].mean():.2f} minutes")
@@ -81,9 +76,8 @@ print(f"Maximum Waiting Time     : {df['WaitingTime'].max():.2f} minutes")
 print(f"Total Simulation Time    : {df['ServiceEndTime'].max():.2f} minutes")
 print(f"Percentage who waited    : {(df['WaitingTime'] > 0).mean() * 100:.2f}%")
 
-# -------------------------------------------
-# 📉 Step 6: Visualizations
-# -------------------------------------------
+# Visualizations
+
 
 # Histogram of waiting times
 plt.figure(figsize=(10, 6))
